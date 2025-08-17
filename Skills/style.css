@@ -1,0 +1,126 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: #f9f9f9;
+}
+
+/* --- Header & Navigation --- */
+header {
+    background: #000000;
+    color: #fff;
+    /* Increased vertical padding for a taller navbar */
+    padding: 1.5rem 2rem;
+}
+
+.logo {
+    height: 50px; /* Set a specific height for the logo */
+    width: auto;
+    display: block; /* Removes extra space below the image */
+}
+
+header nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Ensures space between logo and nav items */
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+}
+
+/* Pushes the logo (the first list item) to the left... */
+header nav ul li:first-child {
+    margin-right: auto;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    position: relative; /* Required for positioning the pseudo-element */
+    padding-bottom: 5px; /* Adds space for the underline to appear */
+    transition: color 0.3s ease, transform 0.3s ease;
+    font-size: 1.1rem; /* Increased font size for nav links */
+}
+header nav ul li + li {
+    margin-left: 25px; /* Increased spacing between links */
+}
+/* Change link color on hover for visual feedback */
+header nav a:hover {
+    color: #ec9019; /* A slightly lighter shade for a subtle effect */
+    transform: scale(0.98); /* Adds a subtle zoom-out effect */
+}
+
+/* This pseudo-element will become our animated underline */
+header nav a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #97e619;
+    left: 0;
+    bottom: 0;
+    transform: scaleX(0); /* Start with no width, making it invisible */
+    transform-origin: right; /* Set the animation to start from the right side */
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1); /* A smooth, stylish animation */
+}
+
+/* On hover, we scale the underline to its full width */
+header nav a:hover::after {
+    transform: scaleX(1); /* Animate to full width */
+    transform-origin: left; /* On exit, the animation will reverse from the left */
+}
+
+.skills {
+  text-align: center;
+  padding: 50px 20px;
+  background: #33456ba1;
+}
+
+.skills h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #333;
+  border-bottom: 2px solid #00ff88;
+  display: inline-block;
+
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.skill-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-size: 1.2rem;
+  color: #444;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.skill-card img {
+  width: 60px; /* Set a specific width for the skill icon */
+  height: 70px;
+  margin-bottom: 15px;
+}
+
+.skills-grid p{
+    margin: 0;
+    font-size: 1rem;
+    color: #666;
+    text-align: center;
+}

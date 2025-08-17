@@ -1,0 +1,255 @@
+/* Basic styles for the main page */
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4e4;
+    color: #333;
+    font-size: 18px; /* Increased base font size for all content */
+}
+
+/* --- Header & Navigation --- */
+header {
+    background: #000000;
+    color: #fff;
+    /* Increased vertical padding for a taller navbar */
+    padding: 1.5rem 2rem;
+}
+
+.logo {
+    height: 50px; /* Set a specific height for the logo */
+    width: auto;
+    display: block; /* Removes extra space below the image */
+}
+
+header nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+/* Pushes the logo (the first list item) to the left... */
+header nav ul li:first-child {
+    margin-right: auto;
+}
+
+/* ...and adds space between the navigation links on the right */
+header nav ul li + li {
+    margin-left: 25px; /* Increased spacing between links */
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    position: relative; /* Required for positioning the pseudo-element */
+    padding-bottom: 5px; /* Adds space for the underline to appear */
+    transition: color 0.3s ease, transform 0.3s ease;
+    font-size: 1.1rem; /* Increased font size for nav links */
+}
+
+/* Change link color on hover for visual feedback */
+header nav a:hover {
+    color: #ec9019; /* A slightly lighter shade for a subtle effect */
+    transform: scale(0.98); /* Adds a subtle zoom-out effect */
+}
+
+/* This pseudo-element will become our animated underline */
+header nav a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #97e619;
+    left: 0;
+    bottom: 0;
+    transform: scaleX(0); /* Start with no width, making it invisible */
+    transform-origin: right; /* Set the animation to start from the right side */
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1); /* A smooth, stylish animation */
+}
+
+/* On hover, we scale the underline to its full width */
+header nav a:hover::after {
+    transform: scaleX(1); /* Animate to full width */
+    transform-origin: left; /* On exit, the animation will reverse from the left */
+}
+
+
+ /*Intro section */
+.main-content .intro {
+    background: #f4f4f4e4;
+    color: #333;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100px;
+    padding: 20px;
+    flex-direction: column;
+    font-size: 18px;
+}
+.intro .line1 {
+    font-size: 2.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typing1 1s steps(4, end) forwards;
+}
+.intro .line2 {
+    font-size: 2.5rem;
+    border-right: 3px solid rgb(255, 255, 255); /* cursor */
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    opacity: 0;
+    animation: typing2 2s steps(12, end) forwards 1s, /* start after line1 */
+                blink 0.9s infinite 1s; /* blinking after appear */
+}
+/* Typing animations */
+@keyframes typing1 {
+    from { width: 0 }
+    to { width: 4ch; }
+}
+
+@keyframes typing2 {
+    from { width: 0; opacity: 1; }
+    to { width: 10ch; opacity: 1; }
+}
+
+/* Blinking cursor */
+@keyframes blink {
+    0%, 50% { border-color: rgb(0, 0, 0); }
+    51%, 100% { border-color: transparent; }
+}
+
+/* --- Main Content --- */
+main {
+    padding: 2rem 0; /* Add some vertical padding */
+}
+
+.main-content {
+    display: flex;
+    gap: 40px; /* Space between the two columns */
+    padding: 0 2rem; /* Match horizontal padding of the header */
+    align-items: center; /* Vertically align the content of both columns */
+    min-height: calc(100vh - 263px); /* Ensures footer stays at the bottom */
+}
+
+.about-me, .personal-display {
+    flex: 1; /* Each section takes up equal space */
+}
+
+.about-me {
+    text-align: left;
+}
+
+.about-me h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.about-me p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.personal-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Aligns items to the right edge of the column */
+    gap: 20px; /* Space between clock and picture */
+}
+
+.my-pic {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%; /* Makes the picture circular */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    border: 5px solid #333;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+
+.clock {
+    position: absolute;
+    top : 110px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #222; /* Inner border color */
+    padding: 8px 15px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 12px rgba(186, 60, 60, 0.8); /* Inset display look */
+}
+
+    /* Digits */
+.digit {
+    position: relative;
+    width: 65px;
+    height: 65px;
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    font-size: 60px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 70px;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0 0 8px rgb(236, 216, 145);
+}
+
+    /* Flip animation */
+.flip {
+    animation: flip 0.5s ease-in-out;
+}
+@keyframes flip {
+    0% { transform: rotateX(0); }
+    50% { transform: rotateX(-90deg); }
+    100% { transform: rotateX(0); }
+}
+
+    /* AM/PM styling */
+.pm {
+    color: rgb(255, 0, 0);
+    font-size: 30px;
+    text-shadow: 0 0 6px rgb(255, 255, 255);
+    margin-left: 5px;
+    align-self: flex-end;
+    padding-bottom: 15px;
+}
+
+
+/* --- Footer --- */
+footer {
+    background: #333;
+    padding: 2rem 0;
+}
+
+.footer-socials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px; /* Adds space between the logos */
+}
+
+.footer-socials img {
+    height: 35px; /* Set size for social media logos */
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.footer-socials li {
+    list-style: none; /* Removes bullet points from the list */
+    color: #fff; /* Text color for the "Connect -" label */
+    font-size: 1.2rem; /* Font size for the label */
+}   
+
+.footer-socials a:hover img {
+    transform: scale(1.15); /* Zoom in effect on hover */
+}

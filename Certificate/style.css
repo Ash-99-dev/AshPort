@@ -1,0 +1,221 @@
+/* Basic styles for the main page */
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #33456ba1;
+
+    color: #333;
+    font-size: 18px; /* Increased base font size for all content */
+}
+
+/* --- Header & Navigation --- */
+header {
+    background: #000000;
+    color: #fff;
+    /* Increased vertical padding for a taller navbar */
+    padding: 1.5rem 2rem;
+}
+
+.logo {
+    height: 50px; /* Set a specific height for the logo */
+    width: auto;
+    display: block; /* Removes extra space below the image */
+}
+
+header nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Ensures space between logo and nav items */
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+}
+
+/* Pushes the logo (the first list item) to the left... */
+header nav ul li:first-child {
+    margin-right: auto;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    position: relative; /* Required for positioning the pseudo-element */
+    padding-bottom: 5px; /* Adds space for the underline to appear */
+    transition: color 0.3s ease, transform 0.3s ease;
+    font-size: 1.1rem; /* Increased font size for nav links */
+}
+header nav ul li + li {
+    margin-left: 25px; /* Increased spacing between links */
+}
+/* Change link color on hover for visual feedback */
+header nav a:hover {
+    color: #ec9019; /* A slightly lighter shade for a subtle effect */
+    transform: scale(0.98); /* Adds a subtle zoom-out effect */
+}
+
+/* This pseudo-element will become our animated underline */
+header nav a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #97e619;
+    left: 0;
+    bottom: 0;
+    transform: scaleX(0); /* Start with no width, making it invisible */
+    transform-origin: right; /* Set the animation to start from the right side */
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1); /* A smooth, stylish animation */
+}
+
+/* On hover, we scale the underline to its full width */
+header nav a:hover::after {
+    transform: scaleX(1); /* Animate to full width */
+    transform-origin: left; /* On exit, the animation will reverse from the left */
+}
+
+/* --- Certification Main Content --- */
+.certification-content {
+    border-radius: 20px;
+    margin: 40px auto;
+    padding: 20px;
+    max-width: 1200px;
+    background: #e4d9d9;
+}
+.cert-title {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #2f2f2f;
+  margin: 0 0 24px;
+  
+}
+/* 2-column grid under the title */
+.cert-grid {
+  max-width: 1100px;
+  margin: 0 auto;             /* center the grid block */
+  display: grid;
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  gap: 22px;                  /* space between cards */
+}
+/* Card styling (shared) */
+.card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.15);
+  transition: transform .25s ease, box-shadow .25s ease;
+  text-align: center;           /* content inside card aligned to start */
+  max-width: 100%;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.22);
+}
+.card h2 {
+  margin: 0 0 10px;
+  font-size: 1.4rem;
+}
+.card h2 a {
+  color: #0a66ff;
+  text-decoration: none;
+}
+.card p {
+  margin: 0;
+  color: #555;
+  font-size: 1rem;
+}
+
+/* Responsive: stack to 1 column on small screens */
+@media (max-width: 768px) {
+  .cert-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*.certification-content .card1, .certification-content .card3 {
+    background: #fff;
+    padding: 20px;
+    margin : 0 0 20px 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 355px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color: #222;
+}
+
+/* Hover effect
+.certification-content .card1:hover, .certification-content .card3:hover {
+    align-content: start;
+    transform: translateX(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Optional title inside card 
+.certification-content .card1 h2,.certification-content .card3 h2 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #0073e6;
+}
+
+.certification-content .card1 p,.certification-content .card3 p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.certification-content .card2, .certification-content .card4 {
+    background: #fff;
+    padding: 20px;
+    margin : 0 10px 20px 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 355px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color: #222;
+}
+
+/* Hover effect 
+.certification-content .card2:hover, .certification-content .card4:hover {
+    align-content: start;
+    transform: translateX(8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}*/
+
+/* Optional title inside card */  /*
+.certification-content .card2 h2,.certification-content .card4 h2 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #0073e6;
+}
+
+.certification-content .card2 p,.certification-content .card4 p {
+    font-size: 1rem;
+    color: #555;
+}*/
